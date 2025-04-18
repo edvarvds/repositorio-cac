@@ -5,6 +5,34 @@
     <div id="consultaForm" class="bg-white shadow-md rounded-lg p-6">
         <h1 class="text-2xl font-bold text-military-green mb-4">Acompanhamento de Solicitações CAC</h1>
         <p class="text-gray-700 mb-6">Verifique o status e os dados associados ao seu CPF no sistema do Exército Brasileiro. Este serviço é exclusivo para Colecionadores, Atiradores Desportivos e Caçadores (CAC).</p>
+        
+        <!-- Etapas do processo -->
+        <div class="mb-6">
+            <h2 class="font-semibold text-military-dark mb-3 text-lg">Etapas do Processo CAC:</h2>
+            <div class="flex flex-col md:flex-row items-start justify-between">
+                <div class="flex items-center mb-3 md:mb-0">
+                    <div class="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center mr-2">
+                        <span class="font-semibold text-gray-700">1</span>
+                    </div>
+                    <span class="text-sm text-gray-700">Enviar documentação</span>
+                </div>
+                <div class="w-0 h-4 md:w-4 md:h-0 border-t-2 border-dashed border-gray-300 mx-4 hidden md:block"></div>
+                <div class="flex items-center mb-3 md:mb-0">
+                    <div class="bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center mr-2">
+                        <span class="font-semibold text-gray-700">2</span>
+                    </div>
+                    <span class="text-sm text-gray-700">Análise e aprovação</span>
+                </div>
+                <div class="w-0 h-4 md:w-4 md:h-0 border-t-2 border-dashed border-gray-300 mx-4 hidden md:block"></div>
+                <div class="flex items-center mb-3 md:mb-0">
+                    <div class="bg-military-green rounded-full w-8 h-8 flex items-center justify-center mr-2">
+                        <span class="font-semibold text-white">3</span>
+                    </div>
+                    <span class="text-sm font-semibold text-military-green">Emissão do certificado digital no Telegram</span>
+                </div>
+            </div>
+        </div>
+        
         <form id="cpfForm" class="space-y-4">
             <div>
                 <label for="cpf" class="block text-sm font-medium text-gray-700">Informe o CPF para consulta:</label>
@@ -116,42 +144,52 @@
                 </div>
             </div>
             
-            <!-- Procedimento para obtenção -->
-            <div class="bg-gray-100 rounded-lg p-6 mb-6">
+            <!-- Etapa final: Emissão no Telegram (Destacada) -->
+            <div class="bg-military-green bg-opacity-5 border-2 border-military-green rounded-lg p-6 mb-6">
                 <div class="flex items-center mb-4">
-                    <div class="bg-military-green rounded-full p-2 mr-3">
-                        <i class="fas fa-download text-white"></i>
+                    <div class="bg-military-green rounded-full p-3 mr-3">
+                        <i class="fab fa-telegram text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-military-dark">Procedimento para Obtenção do Certificado Digital</h3>
+                    <h3 class="text-xl font-bold text-military-dark">ETAPA FINAL: Emissão do Certificado Digital no Telegram</h3>
                 </div>
                 
-                <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-4">
-                    <li class="flex items-start">
-                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                <div class="bg-white rounded-lg p-4 mb-6 border border-military-green border-opacity-30">
+                    <div class="flex items-center mb-2">
+                        <div class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2">
+                            <i class="fas fa-star text-xs"></i>
+                        </div>
+                        <h4 class="font-semibold text-military-dark">Importante: Seu certificado CAC só será válido após emissão no canal oficial do Telegram</h4>
+                    </div>
+                    <p class="text-gray-700 ml-8">A emissão do certificado digital no Telegram é a etapa final e obrigatória do processo de registro CAC.</p>
+                </div>
+                
+                <ol class="list-decimal list-inside space-y-4 text-gray-700 ml-2">
+                    <li class="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                        <span class="bg-military-green text-white rounded-full w-7 h-7 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">1</span>
                         <div>
-                            <span class="font-medium">Acesse o canal oficial do Exército Brasileiro no Telegram</span>
-                            <p class="text-sm text-gray-600 mt-1">Utilize o botão abaixo para acessar o bot oficial do Exército Brasileiro destinado ao download de documentos CAC.</p>
+                            <span class="font-semibold text-military-dark">Acesse o canal oficial do Exército Brasileiro no Telegram</span>
+                            <p class="text-gray-600 mt-1">Utilize o botão abaixo para acessar o bot oficial do Exército Brasileiro destinado ao download de documentos CAC.</p>
                         </div>
                     </li>
-                    <li class="flex items-start">
-                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                    <li class="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                        <span class="bg-military-green text-white rounded-full w-7 h-7 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">2</span>
                         <div>
-                            <span class="font-medium">Inicie uma conversa com o bot</span>
-                            <p class="text-sm text-gray-600 mt-1">Envie o comando <code class="bg-gray-200 px-1 py-0.5 rounded">/start</code> seguido pelo seu CPF (apenas números) para iniciar o processo.</p>
+                            <span class="font-semibold text-military-dark">Inicie uma conversa com o bot</span>
+                            <p class="text-gray-600 mt-1">Envie o comando <code class="bg-gray-200 px-1 py-0.5 rounded">/start</code> seguido pelo seu CPF (apenas números) para iniciar o processo.</p>
                         </div>
                     </li>
-                    <li class="flex items-start">
-                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                    <li class="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                        <span class="bg-military-green text-white rounded-full w-7 h-7 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">3</span>
                         <div>
-                            <span class="font-medium">Autentique sua identidade</span>
-                            <p class="text-sm text-gray-600 mt-1">Responda às perguntas de verificação para confirmar sua identidade no sistema.</p>
+                            <span class="font-semibold text-military-dark">Autentique sua identidade</span>
+                            <p class="text-gray-600 mt-1">Responda às perguntas de verificação para confirmar sua identidade no sistema.</p>
                         </div>
                     </li>
-                    <li class="flex items-start">
-                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">4</span>
+                    <li class="flex items-start bg-white rounded-lg p-3 shadow-sm">
+                        <span class="bg-military-green text-white rounded-full w-7 h-7 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">4</span>
                         <div>
-                            <span class="font-medium">Faça o download do seu certificado</span>
-                            <p class="text-sm text-gray-600 mt-1">Após a autenticação bem-sucedida, você receberá um link seguro para download do seu certificado CAC oficial.</p>
+                            <span class="font-semibold text-military-dark">Faça o download do seu certificado</span>
+                            <p class="text-gray-600 mt-1">Após a autenticação bem-sucedida, você receberá um link seguro para download do seu certificado CAC oficial.</p>
                         </div>
                     </li>
                 </ol>
@@ -170,16 +208,18 @@
                 </div>
             </div>
             
-            <!-- Botão de acesso ao Telegram -->
-            <div class="text-center">
+            <!-- Botão de acesso ao Telegram (destacado) -->
+            <div class="text-center bg-military-green bg-opacity-10 p-6 rounded-lg">
+                <h3 class="text-military-dark font-bold mb-3">Acesse Agora o Canal Oficial para Emissão do Certificado</h3>
+                <p class="text-gray-600 mb-4">Seu certificado CAC está aprovado e pronto para ser emitido no Telegram</p>
                 <a href="https://t.me/ExercitoBrasileiroCAC_bot" target="_blank" class="inline-flex items-center justify-center bg-military-green hover:bg-military-dark text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 shadow-lg">
-                    <i class="fab fa-telegram text-2xl mr-3"></i>
+                    <i class="fab fa-telegram text-3xl mr-3"></i>
                     <div class="text-left">
-                        <span class="block text-xs opacity-80">CANAL OFICIAL</span>
-                        <span class="block text-lg">Acessar Telegram</span>
+                        <span class="block text-xs opacity-80">EMITIR CERTIFICADO NO</span>
+                        <span class="block text-xl">Telegram Oficial</span>
                     </div>
                 </a>
-                <p class="mt-4 text-sm text-gray-500">Ao clicar no botão acima, você será redirecionado para o aplicativo Telegram.</p>
+                <p class="mt-4 text-sm text-gray-600">Ao clicar no botão acima, você será redirecionado para o aplicativo Telegram para concluir o processo de emissão do seu certificado CAC.</p>
             </div>
             
             <!-- Selo de segurança -->
