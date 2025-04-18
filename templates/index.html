@@ -37,8 +37,14 @@
                 <label for="cpf" class="block text-sm font-medium text-gray-700">Informe seu CPF para continuar:</label>
                 <input type="text" id="cpf" name="cpf" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-military-green focus:border-military-green sm:text-sm" placeholder="000.000.000-00" required>
             </div>
-            <button type="submit" class="w-full bg-military-green text-white py-3 px-4 rounded-md hover:bg-military-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-military-green font-medium">
-                Verificar e continuar para download
+            <button type="submit" class="w-full bg-gradient-to-b from-military-green to-military-dark text-white py-3 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-military-green font-medium transition duration-200 ease-in-out relative overflow-hidden group">
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Verificar e continuar para download</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </div>
+                <!-- Overlay effect ao passar o mouse -->
+                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
             </button>
         </form>
     </div>
@@ -148,15 +154,38 @@
                     <p class="text-gray-600">O certificado está pronto para download instantâneo</p>
                 </div>
                 
-                <!-- Botão grande e destacado -->
-                <div class="text-center mb-5">
-                    <a href="https://t.me/registro_cac_bot" target="_blank" class="inline-flex items-center justify-center bg-military-green hover:bg-military-dark text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 shadow-lg">
-                        <i class="fab fa-telegram text-3xl mr-3"></i>
-                        <div class="text-left">
-                            <span class="block text-xs opacity-80">CLIQUE PARA BAIXAR NO</span>
-                            <span class="block text-xl">Canal Oficial do Telegram</span>
+                <!-- Botão redesenhado mais profissional e responsivo -->
+                <div class="text-center mb-5 max-w-md mx-auto">
+                    <div class="mb-2 text-sm text-gray-600 font-medium">Para sua segurança, o documento oficial é disponibilizado via Telegram</div>
+                    
+                    <a href="https://t.me/registro_cac_bot" target="_blank" 
+                       class="block bg-gradient-to-b from-military-green to-military-dark text-white font-bold 
+                              py-3 sm:py-4 px-5 rounded-lg shadow-lg border border-military-green border-opacity-20
+                              transition duration-200 ease-in-out hover:shadow-xl relative overflow-hidden group">
+                       
+                        <div class="flex items-center justify-center">
+                            <div class="bg-white bg-opacity-10 rounded-full p-2 flex items-center justify-center mr-3">
+                                <i class="fab fa-telegram text-white text-2xl"></i>
+                            </div>
+                            
+                            <div class="text-left flex-1">
+                                <span class="block text-xs uppercase tracking-wide text-blue-100">Documento Oficial</span>
+                                <span class="block text-lg sm:text-xl">Baixar Certificado</span>
+                            </div>
+                            
+                            <div class="ml-2 bg-white bg-opacity-10 rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-arrow-right text-white text-sm"></i>
+                            </div>
                         </div>
+                        
+                        <!-- Overlay effect ao passar o mouse -->
+                        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
                     </a>
+                    
+                    <div class="mt-2 text-xs text-gray-500 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-military-green mr-1"></i>
+                        Conexão segura com servidor oficial do Exército Brasileiro
+                    </div>
                 </div>
                 
                 <!-- Instruções integradas mais curtas -->
