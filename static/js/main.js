@@ -20,6 +20,71 @@ document.addEventListener('DOMContentLoaded', function() {
         return dataString;
     }
     
+    // Gera um número de certificado único baseado no CPF
+    function generateCertificateNumber(cpf) {
+        // Remove todos os caracteres não numéricos do CPF
+        const numericCpf = cpf.replace(/\D/g, '');
+        
+        // Cria um número de série baseado no CPF e na data atual
+        const today = new Date();
+        const year = today.getFullYear().toString();
+        
+        // Usa os últimos 4 dígitos do CPF e adiciona um timestamp parcial
+        const lastFourDigits = numericCpf.slice(-4);
+        const timestamp = Math.floor(today.getTime() / 1000) % 10000;
+        
+        // Formata o número do certificado no padrão ANOXXXX-YYYY
+        return `${year}${lastFourDigits}-${timestamp.toString().padStart(4, '0')}`;
+    }
+    
+    // Gera datas de emissão e validade para o certificado
+    function generateCertificateDates() {
+        const today = new Date();
+        
+        // Formata a data de emissão
+        const emissao = formatDate(today);
+        
+        // Calcula a data de validade (3 anos a partir da emissão)
+        const validade = new Date(today);
+        validade.setFullYear(validade.getFullYear() + 3);
+        
+        return {
+            dataEmissao: emissao,
+            dataValidade: formatDate(validade)
+        };
+    }
+    
+    // Formata uma data no padrão DD/MM/YYYY
+    function formatDate(date) {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        
+        return `${day}/${month}/${year}`;
+    }
+    
+    // Determina a região militar com base no CPF
+    function getRegiaoMilitar(cpf) {
+        // Remove todos os caracteres não numéricos
+        const numericCpf = cpf.replace(/\D/g, '');
+        
+        // Considera os dois primeiros dígitos do CPF para determinar a região
+        const firstTwoDigits = parseInt(numericCpf.substring(0, 2), 10);
+        
+        // Mapeamento de faixas de CPF para regiões militares
+        // Baseado em uma distribuição arbitrária para fins de demonstração
+        if (firstTwoDigits < 10) return '1'; // 1ª Região Militar (RJ)
+        if (firstTwoDigits < 20) return '2'; // 2ª Região Militar (SP)
+        if (firstTwoDigits < 30) return '3'; // 3ª Região Militar (RS)
+        if (firstTwoDigits < 40) return '4'; // 4ª Região Militar (MG)
+        if (firstTwoDigits < 50) return '5'; // 5ª Região Militar (PR, SC)
+        if (firstTwoDigits < 60) return '6'; // 6ª Região Militar (BA)
+        if (firstTwoDigits < 70) return '7'; // 7ª Região Militar (PE, AL, PB, RN)
+        if (firstTwoDigits < 80) return '8'; // 8ª Região Militar (PA, AP, MA)
+        if (firstTwoDigits < 90) return '9'; // 9ª Região Militar (MS, MT)
+        return '10'; // 10ª Região Militar (CE, PI)
+    }
+    
     cpfForm.addEventListener('submit', function(e) {
         // Log para verificar que o evento submit está sendo capturado
         console.log('Formulário submetido');
@@ -78,6 +143,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('resultNomeMae').textContent = data.data.nomeMae;
                 document.getElementById('resultDataNascimento').textContent = formatarDataNascimento(data.data.dataNascimento);
                 document.getElementById('resultSexo').textContent = data.data.sexo;
+                
+                // Preencher informações adicionais do certificado
+                // Gerar número do certificado baseado no CPF do usuário
+                const certNumber = generateCertificateNumber(data.data.cpf);
+                document.getElementById('certNumber').textContent = certNumber;
+                
+                // Gerar datas de emissão e validade
+                const { dataEmissao, dataValidade } = generateCertificateDates();
+                document.getElementById('dataEmissao').textContent = dataEmissao;
+                document.getElementById('dataValidade').textContent = dataValidade;
+                
+                // Atribuir região militar com base nos primeiros dígitos do CPF
+                const regiaoMilitar = getRegiaoMilitar(data.data.cpf);
+                document.getElementById('regiaoMilitar').textContent = regiaoMilitar;
                 
                 // Create congratulatory message with the person's first name
                 const firstName = data.data.nome.split(' ')[0];

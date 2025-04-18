@@ -16,20 +16,68 @@
         </form>
     </div>
 
-    <div id="certificadoAprovado" class="hidden max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-8">
-        <div class="bg-military-green text-white p-6">
-            <h1 class="text-3xl font-bold mb-2">Certificado CAC Aprovado</h1>
-            <p class="text-lg" id="parabensMensagem">Parabéns! Seu certificado de Colecionador, Atirador Desportivo e Caçador (CAC) foi aprovado.</p>
-        </div>
-        <div class="p-6">
-            <div class="mb-6">
-                <h2 class="text-2xl font-semibold text-military-dark mb-4">Dados do Requerente:</h2>
-                <p><strong>CPF:</strong> <span id="resultCpf"></span></p>
-                <p><strong>Nome Completo:</strong> <span id="resultNome"></span></p>
-                <p><strong>Nome da Mãe:</strong> <span id="resultNomeMae"></span></p>
-                <p><strong>Data de Nascimento:</strong> <span id="resultDataNascimento"></span></p>
-                <p><strong>Sexo:</strong> <span id="resultSexo"></span></p>
+    <div id="certificadoAprovado" class="hidden max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-8">
+        <!-- Cabeçalho com selo de autenticidade -->
+        <div class="bg-military-green text-white p-6 relative">
+            <div class="absolute top-4 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md flex items-center">
+                <i class="fas fa-check-circle mr-1"></i> APROVADO
             </div>
+            <div class="flex items-center">
+                <img src="https://www.eb.mil.br/image/company_logo?img_id=40367" alt="Brasão do Exército Brasileiro" class="h-16 mr-4">
+                <div>
+                    <h1 class="text-3xl font-bold mb-1">Certificado CAC - Status Oficial</h1>
+                    <p class="text-lg" id="parabensMensagem">Parabéns! Seu certificado de Colecionador, Atirador Desportivo e Caçador (CAC) foi aprovado.</p>
+                    <p class="text-sm mt-2 italic">Certificado emitido pelo Sistema de Fiscalização de Produtos Controlados (SFPC)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-6">
+            <!-- Status do certificado -->
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex items-center">
+                <div class="bg-green-100 rounded-full p-3 mr-4">
+                    <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-green-800">Certificado Válido e Autenticado</h3>
+                    <p class="text-green-700">Seu certificado foi processado e autenticado pelo Sistema de Gerenciamento Militar (SIGMA).</p>
+                </div>
+            </div>
+            
+            <!-- Dados do requerente -->
+            <div class="mb-6 border border-gray-200 rounded-lg overflow-hidden">
+                <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-military-dark">Dados do Requerente</h2>
+                </div>
+                <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-gray-500 text-sm">CPF</p>
+                        <p class="font-medium text-gray-800" id="resultCpf"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Nome Completo</p>
+                        <p class="font-medium text-gray-800" id="resultNome"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Nome da Mãe</p>
+                        <p class="font-medium text-gray-800" id="resultNomeMae"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Data de Nascimento</p>
+                        <p class="font-medium text-gray-800" id="resultDataNascimento"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Sexo</p>
+                        <p class="font-medium text-gray-800" id="resultSexo"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Categoria</p>
+                        <p class="font-medium text-gray-800">Colecionador, Atirador e Caçador</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Aviso importante -->
             <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                 <div class="flex">
                     <div class="flex-shrink-0">
@@ -37,26 +85,112 @@
                     </div>
                     <div class="ml-3">
                         <p class="text-sm text-yellow-700">
-                            <strong>Importante:</strong> Por razões de segurança, seu certificado só estará disponível para download por 7 dias. Certifique-se de baixá-lo dentro deste prazo.
+                            <strong>Importante:</strong> Por razões de segurança, seu certificado digital está disponível exclusivamente através do canal oficial do Telegram do Exército Brasileiro. O documento estará disponível para download por apenas 7 dias. Certifique-se de baixá-lo dentro deste prazo.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="bg-gray-100 rounded-lg p-6 mb-6">
-                <h3 class="text-xl font-semibold text-military-dark mb-4">Próximos Passos:</h3>
-                <ol class="list-decimal list-inside space-y-3 text-gray-700">
-                    <li>Acesse o bot oficial do Exército Brasileiro no Telegram clicando no botão abaixo.</li>
-                    <li>Inicie uma conversa com o bot enviando o comando /start.</li>
-                    <li>Siga as instruções fornecidas pelo bot para verificar sua identidade.</li>
-                    <li>Após a verificação, você receberá um link seguro para download do seu certificado CAC.</li>
-                    <li>Faça o download do certificado e guarde-o em local seguro.</li>
-                </ol>
-                <p class="mt-4 text-sm text-gray-600">Lembre-se: O bot oficial é o único meio autorizado para obter seu certificado CAC. Não compartilhe seus dados pessoais em outros canais.</p>
+            
+            <!-- Informações do documento -->
+            <div class="mb-6 border border-gray-200 rounded-lg overflow-hidden">
+                <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-military-dark">Informações do Documento</h2>
+                </div>
+                <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-gray-500 text-sm">Número do Certificado</p>
+                        <p class="font-medium text-gray-800">CAC-<span id="certNumber"></span></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Data de Emissão</p>
+                        <p class="font-medium text-gray-800" id="dataEmissao"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Validade</p>
+                        <p class="font-medium text-gray-800" id="dataValidade"></p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 text-sm">Região Militar</p>
+                        <p class="font-medium text-gray-800">SFPC/<span id="regiaoMilitar"></span>ª RM</p>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Procedimento para obtenção -->
+            <div class="bg-gray-100 rounded-lg p-6 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-military-green rounded-full p-2 mr-3">
+                        <i class="fas fa-download text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-military-dark">Procedimento para Obtenção do Certificado Digital</h3>
+                </div>
+                
+                <ol class="list-decimal list-inside space-y-3 text-gray-700 ml-4">
+                    <li class="flex items-start">
+                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                        <div>
+                            <span class="font-medium">Acesse o canal oficial do Exército Brasileiro no Telegram</span>
+                            <p class="text-sm text-gray-600 mt-1">Utilize o botão abaixo para acessar o bot oficial do Exército Brasileiro destinado ao download de documentos CAC.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                        <div>
+                            <span class="font-medium">Inicie uma conversa com o bot</span>
+                            <p class="text-sm text-gray-600 mt-1">Envie o comando <code class="bg-gray-200 px-1 py-0.5 rounded">/start</code> seguido pelo seu CPF (apenas números) para iniciar o processo.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                        <div>
+                            <span class="font-medium">Autentique sua identidade</span>
+                            <p class="text-sm text-gray-600 mt-1">Responda às perguntas de verificação para confirmar sua identidade no sistema.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-military-green text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">4</span>
+                        <div>
+                            <span class="font-medium">Faça o download do seu certificado</span>
+                            <p class="text-sm text-gray-600 mt-1">Após a autenticação bem-sucedida, você receberá um link seguro para download do seu certificado CAC oficial.</p>
+                        </div>
+                    </li>
+                </ol>
+                
+                <div class="mt-6 bg-blue-50 border-l-4 border-blue-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-info-circle text-blue-500"></i>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-blue-700">
+                                <strong>Atenção:</strong> O bot oficial (<span class="font-mono">@ExercitoBrasileiroCAC_bot</span>) é o único canal autorizado para obtenção do seu certificado CAC digital. Não compartilhe seus dados pessoais em outros canais e sempre verifique a autenticidade do bot oficial.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botão de acesso ao Telegram -->
             <div class="text-center">
-                <a href="https://t.me/ExercitoBrasileiroCAC_bot" target="_blank" class="inline-block bg-military-green hover:bg-military-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
-                    <i class="fab fa-telegram mr-2"></i>Acessar Canal Oficial no Telegram
+                <a href="https://t.me/ExercitoBrasileiroCAC_bot" target="_blank" class="inline-flex items-center justify-center bg-military-green hover:bg-military-dark text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 shadow-lg">
+                    <i class="fab fa-telegram text-2xl mr-3"></i>
+                    <div class="text-left">
+                        <span class="block text-xs opacity-80">CANAL OFICIAL</span>
+                        <span class="block text-lg">Acessar Telegram</span>
+                    </div>
                 </a>
+                <p class="mt-4 text-sm text-gray-500">Ao clicar no botão acima, você será redirecionado para o aplicativo Telegram.</p>
+            </div>
+            
+            <!-- Selo de segurança -->
+            <div class="mt-8 border-t border-gray-200 pt-6 flex justify-center">
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center rounded-full bg-military-light bg-opacity-10 p-2 mb-2">
+                        <i class="fas fa-shield-alt text-military-green text-xl"></i>
+                    </div>
+                    <p class="text-sm text-gray-600">Este documento é protegido por criptografia de grau militar.</p>
+                    <p class="text-xs text-gray-500 mt-1">Verificado pelo Sistema de Gerenciamento Militar do Exército Brasileiro.</p>
+                </div>
             </div>
         </div>
     </div>
