@@ -1,9 +1,12 @@
 import os
 import logging
 import requests
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
+import json
+from datetime import datetime, timedelta
+import hashlib
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -119,6 +122,43 @@ def verify_cpf():
             'status': 'not_found',
             'message': 'CPF não encontrado no sistema. Verifique se digitou corretamente ou entre em contato com o SFPC mais próximo.'
         })
+
+@app.route('/api/download', methods=['GET'])
+def download_certificate():
+    """Endpoint para download do certificado"""
+    cpf = request.args.get('cpf')
+    if not cpf:
+        return jsonify({'error': 'CPF não fornecido'}), 400
+    
+    # Gera o número do protocolo
+    now = datetime.now()
+    protocol_base = cpf[:5]
+    hash_value = abs(hash(f"{cpf}{now.timestamp()}"))
+    sequential = str(hash_value % 10000).zfill(4)
+    protocol = f"CAC-{protocol_base}-{sequential}/{now.year}"
+    
+    # Gera o certificado
+    certificate_data = {
+        'protocolo': protocol,
+        'data_emissao': now.strftime('%d/%m/%Y'),
+        'hora_emissao': now.strftime('%H:%M:%S'),
+        'validade': (now + timedelta(days=365*5)).strftime('%d/%m/%Y'),
+        'cpf': cpf,
+        'regiao_militar': '1ª RM'  # Pode ser ajustado conforme necessário
+    }
+    
+    # Cria um arquivo temporário com o certificado
+    temp_file = f"temp_certificate_{cpf}.json"
+    with open(temp_file, 'w') as f:
+        json.dump(certificate_data, f, indent=2)
+    
+    # Envia o arquivo
+    return send_file(
+        temp_file,
+        as_attachment=True,
+        download_name=f"certificado_cac_{cpf}.json",
+        mimetype='application/json'
+    )
 
 # Initialize the database
 with app.app_context():

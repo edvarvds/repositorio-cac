@@ -38,13 +38,30 @@ function isValidCPF(cpf) {
 
 // Format the CPF as it's typed
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Cleave.js for CPF formatting
+    // Initialize Cleave for CPF input
+    new Cleave('#cpf', {
+        numericOnly: true,
+        blocks: [3, 3, 3, 2],
+        delimiters: ['.', '.', '-']
+    });
+
+    // Add input validation
     const cpfInput = document.getElementById('cpf');
-    if (cpfInput) {
-        new Cleave(cpfInput, {
-            delimiters: ['.', '.', '-'],
-            blocks: [3, 3, 3, 2],
-            numericOnly: true
-        });
-    }
+    cpfInput.addEventListener('input', function() {
+        const value = this.value.replace(/\D/g, '');
+        if (value.length > 11) {
+            this.value = this.value.slice(0, 14); // 11 digits + 3 delimiters
+        }
+    });
+
+    // Add form validation
+    const form = document.getElementById('cpfForm');
+    form.addEventListener('submit', function(e) {
+        const cpf = cpfInput.value.replace(/\D/g, '');
+        if (cpf.length !== 11) {
+            e.preventDefault();
+            alert('Por favor, informe um CPF válido com 11 dígitos.');
+            return;
+        }
+    });
 });

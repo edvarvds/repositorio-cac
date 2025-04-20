@@ -56,11 +56,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Formata uma data no padrão DD/MM/YYYY
     function formatDate(date) {
-        const day = date.getDate().toString().padStart(2, '0');
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const year = date.getFullYear();
-        
-        return `${day}/${month}/${year}`;
+        return date.toLocaleDateString('pt-BR');
+    }
+    
+    // Helper function to format time
+    function formatTime(date) {
+        return date.toLocaleTimeString('pt-BR');
+    }
+    
+    // Helper function to generate protocol number
+    function generateProtocol(cpf, name) {
+        const now = new Date();
+        const protocolBase = cpf.slice(0, 5);
+        const hashValue = Math.abs(hashCode(cpf + name));
+        const sequential = String(hashValue % 10000).padStart(4, '0');
+        return `CAC-${protocolBase}-${sequential}/${now.getFullYear()}`;
+    }
+    
+    // Helper function to calculate hash code
+    function hashCode(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
+        }
+        return hash;
     }
     
     // Determina a região militar com base no CPF
@@ -85,120 +106,54 @@ document.addEventListener('DOMContentLoaded', function() {
         return '10'; // 10ª Região Militar (CE, PI)
     }
     
-    cpfForm.addEventListener('submit', function(e) {
-        // Log para verificar que o evento submit está sendo capturado
-        console.log('Formulário submetido');
+    // Function to handle form submission
+    async function handleFormSubmit(e) {
         e.preventDefault();
         
-        const cpfInput = document.getElementById('cpf');
-        const cpfValue = cpfInput.value;
-        console.log('CPF informado:', cpfValue);
+        const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
         
-        // Clear previous error messages
-        errorMessage.innerHTML = '';
-        errorMessage.classList.add('hidden');
-        
-        // Validate CPF format
-        if (!isValidCPF(cpfValue)) {
-            console.log('CPF inválido');
-            errorMessage.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>CPF inválido. Por favor, digite um CPF válido.';
-            errorMessage.classList.remove('hidden');
-            return;
-        }
-        
-        // Show loading state
-        const submitButton = cpfForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Verificando...';
-        
-        // Make API call to verify CPF
-        console.log('Enviando requisição para a API');
-        fetch('/api/verify-cpf', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ cpf: cpfValue }),
-        })
-        .then(response => {
-            console.log('Resposta recebida:', response);
-            if (!response.ok) {
-                throw new Error('Erro na resposta da API: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Log para verificar os dados retornados
-            console.log('Dados recebidos:', data);
+        try {
+            const response = await fetch('/api/verify-cpf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ cpf }),
+            });
             
-            // Reset button state
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalText;
+            const data = await response.json();
             
             if (data.status === 'approved') {
-                // Fill in the certificate data
+                // Fill user data
                 document.getElementById('resultCpf').textContent = data.data.cpf;
                 document.getElementById('resultNome').textContent = data.data.nome;
                 document.getElementById('resultNomeMae').textContent = data.data.nomeMae;
-                document.getElementById('resultDataNascimento').textContent = formatarDataNascimento(data.data.dataNascimento);
+                document.getElementById('resultDataNascimento').textContent = data.data.dataNascimento;
                 document.getElementById('resultSexo').textContent = data.data.sexo;
                 
-                // Preencher informações adicionais do certificado
-                // Gerar número do certificado baseado no CPF do usuário
-                const certNumber = generateCertificateNumber(data.data.cpf);
-                document.getElementById('certNumber').textContent = certNumber;
+                // Generate certificate number
+                const now = new Date();
+                const protocol = generateProtocol(cpf, data.data.nome);
                 
-                // Gerar datas de emissão e validade
-                const { dataEmissao, dataValidade } = generateCertificateDates();
-                document.getElementById('dataEmissao').textContent = dataEmissao;
-                document.getElementById('dataValidade').textContent = dataValidade;
+                document.getElementById('certNumber').textContent = protocol;
+                document.getElementById('dataEmissao').textContent = formatDate(now);
+                document.getElementById('dataValidade').textContent = formatDate(new Date(now.setFullYear(now.getFullYear() + 5)));
+                document.getElementById('regiaoMilitar').textContent = '1';
                 
-                // Atribuir região militar com base nos primeiros dígitos do CPF
-                const regiaoMilitar = getRegiaoMilitar(data.data.cpf);
-                document.getElementById('regiaoMilitar').textContent = regiaoMilitar;
-                
-                // Create congratulatory message with the person's first name
-                const firstName = data.data.nome.split(' ')[0];
-                document.getElementById('parabensMensagem').textContent = 
-                    `Parabéns, ${firstName}! Seu certificado de Colecionador, Atirador Desportivo e Caçador (CAC) foi aprovado.`;
-                
-                // Hide the form and show the certificate
-                consultaForm.classList.add('hidden');
-                certificadoAprovado.classList.remove('hidden');
-                
-                // Track successful verification with TikTok Pixel
-                if (window.ttq) {
-                    console.log('Enviando evento para TikTok Pixel');
-                    ttq.track('CompleteRegistration', {
-                        content_name: 'CAC Certificate Verification',
-                        status: 'approved'
-                    });
-                }
-                
-                // Smooth scroll to certificate
-                certificadoAprovado.scrollIntoView({ behavior: 'smooth' });
+                // Show certificate
+                document.getElementById('consultaForm').classList.add('hidden');
+                document.getElementById('certificadoAprovado').classList.remove('hidden');
             } else {
-                console.log('CPF não encontrado');
-                // Show error message
-                errorMessage.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>${data.message}`;
-                errorMessage.classList.remove('hidden');
-                
-                // Track failed verification with TikTok Pixel
-                if (window.ttq) {
-                    ttq.track('Search', {
-                        content_name: 'CAC Certificate Verification',
-                        status: 'not_found'
-                    });
-                }
+                alert(data.message || 'Erro ao verificar CPF');
             }
-        })
-        .catch(error => {
-            console.error('Erro ao processar a solicitação:', error);
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalText;
-            errorMessage.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i>Erro ao processar a solicitação. Por favor, tente novamente mais tarde.';
-            errorMessage.classList.remove('hidden');
-        });
-    });
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro ao processar sua solicitação. Por favor, tente novamente.');
+        }
+    }
+    
+    // Add event listeners when DOM is loaded
+    if (cpfForm) {
+        cpfForm.addEventListener('submit', handleFormSubmit);
+    }
 });

